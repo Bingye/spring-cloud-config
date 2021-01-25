@@ -1,6 +1,9 @@
 server: 
   port: 8080
+  servlet: 
+    context-path: /test
 
 spring: 
   application: 
     name: spring-cloud-provider
+
