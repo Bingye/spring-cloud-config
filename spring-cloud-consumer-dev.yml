@@ -27,8 +27,8 @@ management:
 
 #设置feign客户端的超时时间
 ribbon:
-  ReadTimeout: 5000
-  ConnectTimeout: 5000
+  ReadTimeout: 10000
+  ConnectTimeout: 10000
 
 #日志级别
 logging: 
