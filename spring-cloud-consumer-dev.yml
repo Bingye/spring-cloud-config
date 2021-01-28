@@ -8,7 +8,16 @@
 #  cloud:
 #    zookeeper:
 #      connect-string: 127.0.0.1:2181 
+spring:
+  #微服务监控
+  zipkin: 
+    base-url: http://localhost:9411
+  sleuth:
+    sampler:
+      #日志采样率，[0,1] 1则表示全部采样
+      probability: 1
 
+#注册中心
 eureka: 
   client:
     #将自己注册到服务注册中心 
@@ -19,13 +28,14 @@ eureka:
       defaultZone: http://eureka7001.com:7001/eureka 
 #      defaultZone: http://eureka7001.com:7001/eureka,http://eureka7002.com:7002/eureka
 
+#打开actuator的页面
 management: 
   endpoints: 
     web:
       exposure:
         include: "*"
 
-#设置feign客户端的超时时间
+#设置feign客户端ribbon的超时时间
 ribbon:
   ReadTimeout: 7000
   ConnectTimeout: 7000
@@ -40,6 +50,7 @@ logging:
 feign:
   hystrix: 
     enabled: true
+
 #这里是一个坑 超时时间配置，此处全局超时配置时间大于@HystrixProperty配置时间后，@HystrixProperty注解中的超时才生效
 hystrix: 
   command: 
